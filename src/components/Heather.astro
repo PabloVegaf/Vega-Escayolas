@@ -1,5 +1,5 @@
 ---
-import Logo from '../assets/Logo Vega Escayolas.jpg';
+import Logo from '../assets/Logo Vega Escayolas.png';
 import background from '../assets/background.svg';
 ---
 
@@ -9,7 +9,9 @@ import background from '../assets/background.svg';
         <a href="#">Sobre nosotros</a>
         <a href="#">Servicios</a>
         <a href="#">Proyectos</a>
-        <a href="">Contacto</a>
+        <div id="contacto">
+            <a href="">Contacto</a>
+        </div>
     </div>
         
 </div>
@@ -22,7 +24,9 @@ import background from '../assets/background.svg';
         justify-content: space-between;
         padding-left: 2rem;
         padding-right: 2rem;
-        overflow: hidden; // Evita que el fondo se desborde
+        overflow: hidden; /* Evita que el fondo se desborde */
+        background-color: #F9FBFD;
+        border-bottom: solid 1px #E0E0E0;
     }
     img{
         max-width: 100%;
@@ -35,11 +39,24 @@ import background from '../assets/background.svg';
         gap: 2rem;
         font-weight: bold;
     }
-    a{
+    #enlaces a{
         text-decoration: none;
-        color: black;
+        color: #000016;
     }
-    a:hover{
-        transform:scale(1.2)
+    #enlaces a:hover, #contacto:hover{
+        transform:scale(1.06); /* aumenta ligeramente el tamaño del enlace */
     }
+    #enlaces a, #contacto{
+        transition: transform 0.25s ease-out; /* Transforma la propiedad a animar (transform en este caso), ease-out hace que el movimiento empiece rapido y termine lento. */
+    }
+    #contacto{
+        background-color: #8BC34A;
+        border-radius: 25px;
+        padding: 0.5rem 1rem;
+        
+    }
+    #contacto a{
+        color: white;
+    }
+
 </style>

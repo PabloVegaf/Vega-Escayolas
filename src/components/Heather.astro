@@ -1,4 +1,45 @@
 ---
-import Logo from '../assets/Logo Vega Escayolas.png';
+import Logo from '../assets/Logo Vega Escayolas.jpg';
 import background from '../assets/background.svg';
 ---
+
+<div class="heather">
+    <img src={Logo.src} alt="Logo Vega Escayolas">
+    <div id="enlaces">
+        <a href="#">Sobre nosotros</a>
+        <a href="#">Servicios</a>
+        <a href="#">Proyectos</a>
+        <a href="">Contacto</a>
+    </div>
+        
+</div>
+
+<style>
+    .heather{
+        height: 5rem;
+        max-width: 100%;
+        display: flex;
+        justify-content: space-between;
+        padding-left: 2rem;
+        padding-right: 2rem;
+        overflow: hidden; // Evita que el fondo se desborde
+    }
+    img{
+        max-width: 100%;
+        height: auto;
+        object-fit: contain;
+    }
+    #enlaces{
+        display: flex;
+        align-items: center;
+        gap: 2rem;
+        font-weight: bold;
+    }
+    a{
+        text-decoration: none;
+        color: black;
+    }
+    a:hover{
+        transform:scale(1.2)
+    }
+</style>

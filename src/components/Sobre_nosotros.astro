@@ -2,11 +2,66 @@
 import imagen from '../assets/imagen Javier y Rafa.jpg';
 ---
 <div id="sobre_nosotros">
-    <div id="textos">
-        <p>Sobre nosotros</p>
-        <h2>Comprometidos con la calidad y la satisfacción del cliente</h2>
-        <p>En Vega Escayolas, llevamos años de experiencia en el sector de la construcción y reformas, especializándonos en la instalación de pladur, aplicación de perlita y trabajos con escayola. Nos dedicamos a ofrecer soluciones a medida para cada proyecto. <br><br> Creemos en el trabajo bien hecho, utilizando materiales de primera calidad y prestando atención a cada detalle para garantizar resultados duraderos y estéticamente impecalbes. La confianza de nuestros clientes es nuestro mayor aval.</p>    
-    </div>
-
-    <img src={imagen.src} alt="Imagen sobre nosotros" width="150px">
+        <p id="tituloSecundario">Sobre nosotros</p>
+        <p id="tituloPrincipal">Comprometidos con la calidad y la satisfacción del cliente</p>
+        <p id="TextoPrincipal">En Vega Escayolas, llevamos años de experiencia en el sector de la construcción y reformas, especializándonos en la instalación de pladur, aplicación de perlita y trabajos con escayola. Nos dedicamos a ofrecer soluciones a medida para cada proyecto. <br><br> Creemos en el trabajo bien hecho, utilizando materiales de primera calidad y prestando atención a cada detalle para garantizar resultados duraderos y estéticamente impecalbes. La confianza de nuestros clientes es nuestro mayor aval.</p>    
+    <img id="imagen_sobre_nostros" src={imagen.src} alt="Imagen sobre nosotros">
 </div>
+
+
+<style>
+    #sobre_nosotros {
+    display: grid;
+    /* 2 columnas iguales (izquierda y derecha) */
+    grid-template-columns: 1fr 1fr; 
+    /* AJUSTE: auto para los títulos, 1fr para el texto restante para que llene el hueco */
+    grid-template-rows: auto auto 1fr; 
+    column-gap: 20px; /* Un poco de aire entre texto e imagen */
+    row-gap: 10px;
+    height: 100%; /* Asegura que el contenedor tenga altura */
+}
+
+/* Tus grid-area estaban bien, pero aquí te los confirmo: */
+#tituloSecundario { 
+    grid-area: 1 / 1 / 2 / 2; 
+    /* Fila 1, Columna 1 */
+}
+
+#tituloPrincipal { 
+    grid-area: 2 / 1 / 3 / 2; 
+    /* Fila 2, Columna 1 */
+}
+
+#TextoPrincipal { 
+    grid-area: 3 / 1 / 4 / 2; 
+    /* Fila 3, Columna 1 */
+}
+
+#imagen_sobre_nostros { 
+    grid-area: 1 / 2 / 4 / 3; 
+    /* Desde la Fila 1 hasta la 4 (ocupa las 3 filas), en la Columna 2 */
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Para que la imagen no se deforme al estirarse */
+}
+    
+    #imagen_sobre_nostros{
+        max-width: 20%;
+        border-radius: 15px;
+    }
+    #tituloSecundario{
+        font-weight: bold;
+        color: #8BC34A;
+        margin-bottom: 0.2rem;
+    }
+    #tituloPrincipal{
+        font-size: 2rem;
+        font-weight: bold;
+        max-width: 30rem;
+    }
+    #textoPrincipal{
+        max-width: 40rem;
+        text-align: center;
+        margin-bottom: 2rem;
+    }
+</style>

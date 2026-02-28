@@ -17,27 +17,33 @@ import Logo from '../assets/Logo Vega Escayolas.png';
 
 <style>
     .header{
-        height: 5rem;
-        max-width: 100%;
-        display: flex;
-        justify-content: space-between;
-        padding-left: 2rem;
-        padding-right: 2rem;
-        overflow: hidden; /* Evita que el fondo se desborde */
-        background-color: #F9FBFD;
-        border-bottom: solid 1px #E0E0E0;
+    height: 5rem;
+    max-width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    background-color: #F9FBFD;
+    border-bottom: solid 1px #E0E0E0;
     }
+
     img{
         max-width: 100%;
         height: auto;
         object-fit: contain;
     }
     #enlaces{
-        display: flex;
-        align-items: center;
-        gap: 2rem;
-        font-weight: bold;
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    row-gap: 0.25rem;
+    font-size: 0.95rem;
+    max-width: 100%;
+    font-weight: bold;
     }
+
     #enlaces a{
         text-decoration: none;
         color: #000016;

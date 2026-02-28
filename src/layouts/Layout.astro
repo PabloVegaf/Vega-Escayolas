@@ -20,22 +20,22 @@ import Footer from '../components/Footer.astro';
 		<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 		<title>Vega Escayolas</title>
 	</head>
-	<header>
-		<Navbar />
-		<Header />
-	</header>
 	<body>
+		<header>
+			<Navbar />
+			<Header />
+		</header>
 		<main>
 			<slot />
 			<Sobre_nosotros />
 			<Nuestros_servicios />
 			<Trabajos />
 		</main>
+		<footer>
+			<Contacto />
+			<Footer />
+		</footer>
 	</body>
-	<footer>
-		<Contacto />
-		<Footer />
-	</footer>
 </html>
 
 <style>

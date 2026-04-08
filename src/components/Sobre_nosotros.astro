@@ -1,67 +1,90 @@
 ---
 import imagen from '../assets/imagen Javier y Rafa.jpg';
 ---
-<div id="sobre_nosotros">
-        <p id="tituloSecundario">Sobre nosotros</p>
-        <p id="tituloPrincipal">Comprometidos con la calidad y la satisfacción del cliente</p>
-        <p id="TextoPrincipal">En Vega Escayolas, llevamos años de experiencia en el sector de la construcción y reformas, especializándonos en la instalación de pladur, aplicación de perlita y trabajos con escayola. Nos dedicamos a ofrecer soluciones a medida para cada proyecto. <br><br> Creemos en el trabajo bien hecho, utilizando materiales de primera calidad y prestando atención a cada detalle para garantizar resultados duraderos y estéticamente impecalbes. La confianza de nuestros clientes es nuestro mayor aval.</p>    
-    <img id="imagen_sobre_nostros" src={imagen.src} alt="Imagen sobre nosotros">
+<div class="sobre_nosotros_container">
+    <div class="sobre_nosotros_grid">
+        <p class="tituloSecundario">Sobre nosotros</p>
+        <p class="tituloPrincipal">Comprometidos con la calidad y la satisfacción del cliente</p>
+        <p class="textoPrincipal">En Vega Escayolas, llevamos años de experiencia en el sector de la construcción y reformas, especializándonos en la instalación de pladur, aplicación de perlita y trabajos con escayola. Nos dedicamos a ofrecer soluciones a medida para cada proyecto. <br><br> Creemos en el trabajo bien hecho, utilizando materiales de primera calidad y prestando atención a cada detalle para garantizar resultados duraderos y estéticamente impecables. La confianza de nuestros clientes es nuestro mayor aval.</p>    
+        <img class="imagen_sobre_nosotros" src={imagen.src} alt="Imagen sobre nosotros">
+    </div>
 </div>
 
-
 <style>
-    #sobre_nosotros {
-    display: grid;
-    /* 2 columnas iguales (izquierda y derecha) */
-    grid-template-columns: 1fr 1fr; 
-    /* AJUSTE: auto para los títulos, 1fr para el texto restante para que llene el hueco */
-    grid-template-rows: auto auto 1fr; 
-    column-gap: 20px; /* Un poco de aire entre texto e imagen */
-    row-gap: 10px;
-    height: 100%; /* Asegura que el contenedor tenga altura */
-}
-
-/* Tus grid-area estaban bien, pero aquí te los confirmo: */
-#tituloSecundario { 
-    grid-area: 1 / 1 / 2 / 2; 
-    /* Fila 1, Columna 1 */
-}
-
-#tituloPrincipal { 
-    grid-area: 2 / 1 / 3 / 2; 
-    /* Fila 2, Columna 1 */
-}
-
-#TextoPrincipal { 
-    grid-area: 3 / 1 / 4 / 2; 
-    /* Fila 3, Columna 1 */
-}
-
-#imagen_sobre_nostros { 
-    grid-area: 1 / 2 / 4 / 3; 
-    /* Desde la Fila 1 hasta la 4 (ocupa las 3 filas), en la Columna 2 */
-    width: 100%;
-    height: 100%;
-    object-fit: cover; /* Para que la imagen no se deforme al estirarse */
-}
-    
-    #imagen_sobre_nostros{
-        max-width: 20%;
-        border-radius: 15px;
+    .sobre_nosotros_container {
+        width: 90%;
+        margin: 0 auto;
+        padding: 2rem 2rem;
     }
-    #tituloSecundario{
+
+    .sobre_nosotros_grid {
+        display: grid;
+        grid-template-columns: 1fr auto;
+        grid-template-rows: auto auto 1fr;
+        column-gap: 2.5rem;
+        row-gap: 0.9rem;
+        align-items: start;
+    }
+
+    .tituloSecundario {
+        grid-area: 1 / 1 / 2 / 2;
         font-weight: bold;
         color: #8BC34A;
-        margin-bottom: 0.2rem;
+        margin-bottom: 0.5rem;
+        font-size: 1.1rem;
     }
-    #tituloPrincipal{
+
+    .tituloPrincipal {
+        grid-area: 2 / 1 / 3 / 2;
         font-size: 2rem;
         font-weight: bold;
-        max-width: 30rem;
+        line-height: 1.3;
     }
-    #textoPrincipal{
-        max-width: 40rem;
-        text-align: center;
-        margin-bottom: 2rem;
+
+    .textoPrincipal {
+        grid-area: 3 / 1 / 4 / 2;
+        line-height: 1.6;
+        color: #555;
+    }
+
+    .imagen_sobre_nosotros {
+        grid-area: 1 / 2 / 4 / 3;
+        width: 100%;
+        max-width: 25rem;
+        height: auto;
+        object-fit: contain;
+        border-radius: 0.9rem;
+    }
+
+    @media (max-width: 48em) {
+        .sobre_nosotros_grid {
+            grid-template-columns: 1fr;
+            grid-template-rows: auto auto auto auto;
+        }
+
+        .tituloSecundario {
+            grid-area: 1 / 1 / 2 / 2;
+        }
+
+        .tituloPrincipal {
+            grid-area: 2 / 1 / 3 / 2;
+        }
+
+        .textoPrincipal {
+            grid-area: 4 / 1 / 5 / 2;
+        }
+
+        .imagen_sobre_nosotros {
+            grid-area: 3 / 1 / 4 / 2;
+            height: 15.6rem;
+        }
+
+        .sobre_nosotros_container {
+            padding: 2rem 1rem;
+        }
+
+        .tituloPrincipal {
+            font-size: 1.5rem;
+        }
     }
 </style>

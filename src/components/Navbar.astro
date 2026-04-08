@@ -5,11 +5,11 @@ import Logo from '../assets/Logo Vega Escayolas.png';
 <div class="header">
     <img src={Logo.src} alt="Logo Vega Escayolas">
     <div id="enlaces">
-        <a href="#">Sobre nosotros</a>
-        <a href="#">Servicios</a>
-        <a href="#">Proyectos</a>
-        <div id="contacto">
-            <a href="">Contacto</a>
+        <a href="#sobre-nosotros">Sobre nosotros</a>
+        <a href="#servicios">Servicios</a>
+        <a href="#proyectos">Proyectos</a>
+        <div id="boton-contacto">
+            <a href="#contacto">Contacto</a>
         </div>
     </div>
         
@@ -48,8 +48,20 @@ import Logo from '../assets/Logo Vega Escayolas.png';
         text-decoration: none;
         color: #000016;
     }
-    #enlaces a:hover, #contacto:hover{
+    #enlaces a:hover, #boton-contacto:hover{
         transform:scale(1.06); /* aumenta ligeramente el tamaño del enlace */
+    }
+    #enlaces a, #boton-contacto{
+        transition: transform 0.25s ease-out; /* Transforma la propiedad a animator (transform en este caso), ease-out hace que el movimiento empiece rapido y termine lento. */
+    }
+    #boton-contacto{
+        background-color: #8BC34A;
+        border-radius: 25px;
+        padding: 0.5rem 1rem;
+        
+    }
+    #boton-contacto a{
+        color: white;
     }
     #enlaces a, #contacto{
         transition: transform 0.25s ease-out; /* Transforma la propiedad a animar (transform en este caso), ease-out hace que el movimiento empiece rapido y termine lento. */

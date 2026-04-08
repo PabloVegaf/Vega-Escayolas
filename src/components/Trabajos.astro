@@ -1,1 +1,131 @@
-<h1>Trabajos</h1>
+<div class="trabajos_container">
+    <div class="trabajos_encabezado">
+        <p class="subtitulo">PORTFOLIO</p>
+        <h2 class="titulo">Algunos de Nuestros Trabajos</h2>
+    </div>
+    <div class="trabajos_grid">
+        <div class="tarjeta">
+            <div class="tarjeta_imagen">
+                <img src="https://placehold.co/400x250/e8e8e8/666666?text=Reforma+Vivienda" alt="Reforma de vivienda">
+            </div>
+            <div class="tarjeta_contenido">
+                <h3>Reforma de Vivienda</h3>
+                <p>Instalación completa de techos y tabiquería en pladur para una vivienda moderna y funcional.</p>
+            </div>
+        </div>
+        <div class="tarjeta">
+            <div class="tarjeta_imagen">
+                <img src="https://placehold.co/400x250/e8e8e8/666666?text=Oficinas+Corporativas" alt="Oficinas corporativas">
+            </div>
+            <div class="tarjeta_contenido">
+                <h3>Oficinas Corporativas</h3>
+                <p>Aislamiento térmico y acústico con perlita, más alisado de techos para un entorno profesional.</p>
+            </div>
+        </div>
+        <div class="tarjeta">
+            <div class="tarjeta_imagen">
+                <img src="https://placehold.co/400x250/e8e8e8/666666?text=Decoracion+Clasica" alt="Decoración clásica">
+            </div>
+            <div class="tarjeta_contenido">
+                <h3>Decoración Clásica</h3>
+                <p>Molduras de escayola artesanales que aportan elegancia y distinción a cualquier espacio.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .trabajos_container {
+        width: 90%;
+        margin: 0 auto;
+        padding: 3rem 2rem;
+        background-color: #f9fafd;
+    }
+
+    .trabajos_encabezado {
+        text-align: center;
+        margin-bottom: 2.5rem;
+    }
+
+    .subtitulo {
+        color: #8BC34A;
+        font-weight: bold;
+        font-size: 0.9rem;
+        margin-bottom: 0.5rem;
+        letter-spacing: 0.1em;
+    }
+
+    .titulo {
+        font-size: 2rem;
+        color: #1f283a;
+        font-weight: bold;
+    }
+
+    .trabajos_grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2rem;
+    }
+
+    .tarjeta {
+        background-color: white;
+        border-radius: 12px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        overflow: hidden;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .tarjeta:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+    }
+
+    .tarjeta_imagen {
+        width: 100%;
+        height: 15.6rem;
+        overflow: hidden;
+    }
+
+    .tarjeta_imagen img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .tarjeta_contenido {
+        padding: 1.5rem;
+    }
+
+    .tarjeta_contenido h3 {
+        font-size: 1.1rem;
+        color: #1f283a;
+        margin-bottom: 0.5rem;
+        font-weight: bold;
+    }
+
+    .tarjeta_contenido p {
+        color: #666;
+        font-size: 0.9rem;
+        line-height: 1.5;
+    }
+
+    @media (max-width: 64em) {
+        .trabajos_grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+
+    @media (max-width: 48em) {
+        .trabajos_grid {
+            grid-template-columns: 1fr;
+        }
+
+        .trabajos_container {
+            padding: 2rem 1rem;
+        }
+
+        .titulo {
+            font-size: 1.5rem;
+        }
+    }
+</style>

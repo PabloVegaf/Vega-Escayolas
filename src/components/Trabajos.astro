@@ -1,36 +1,75 @@
+---
+import Antes1 from '../assets/Antes1.jpg';
+import Antes2 from '../assets/Antes2.jpg';
+import Antes3 from '../assets/Antes3.jpg';
+import Despues1 from '../assets/Despues1.jpg';
+import Despues2 from '../assets/Despues2.jpg';
+import Despues3 from '../assets/Despues3.jpg';
+
+const trabajos = [
+    {
+        titulo: 'Reforma de Vivienda',
+        descripcion: 'Instalación completa de techos y tabiquería en pladur para una vivienda moderna y funcional.',
+        imagenAntes: Antes1,
+        imagenDespues: Despues1,
+        altAntes: 'Estado previo de la reforma de vivienda',
+        altDespues: 'Resultado final de la reforma de vivienda',
+        posicionAntes: 'center center',
+        posicionDespues: 'center center',
+    },
+    {
+        titulo: 'Oficinas Corporativas',
+        descripcion: 'Aislamiento térmico y acústico con perlita, más alisado de techos para un entorno profesional.',
+        imagenAntes: Antes2,
+        imagenDespues: Despues2,
+        altAntes: 'Estado previo de las oficinas corporativas',
+        altDespues: 'Resultado final de las oficinas corporativas',
+        posicionAntes: 'center center',
+        posicionDespues: 'center center',
+    },
+    {
+        titulo: 'Decoración Clásica',
+        descripcion: 'Molduras de escayola artesanales que aportan elegancia y distinción a cualquier espacio.',
+        imagenAntes: Antes3,
+        imagenDespues: Despues3,
+        altAntes: 'Estado previo del espacio con decoración clásica',
+        altDespues: 'Resultado final del espacio con decoración clásica',
+        posicionAntes: 'center center',
+        posicionDespues: 'center center',
+    },
+];
+---
+
 <div class="trabajos_container">
     <div class="trabajos_encabezado">
         <p class="subtitulo">PORTFOLIO</p>
         <h2 class="titulo">Algunos de Nuestros Trabajos</h2>
     </div>
     <div class="trabajos_grid">
-        <div class="tarjeta">
-            <div class="tarjeta_imagen">
-                <img src="https://placehold.co/400x250/e8e8e8/666666?text=Reforma+Vivienda" alt="Reforma de vivienda">
+        {trabajos.map((trabajo) => (
+            <div class="tarjeta">
+                <div class="tarjeta_imagen">
+                    <img
+                        class="imagen_comparativa imagen_antes"
+                        src={trabajo.imagenAntes.src}
+                        alt={trabajo.altAntes}
+                        style={`object-position: ${trabajo.posicionAntes};`}
+                    />
+                    <img
+                        class="imagen_comparativa imagen_despues"
+                        src={trabajo.imagenDespues.src}
+                        alt={trabajo.altDespues}
+                        style={`object-position: ${trabajo.posicionDespues};`}
+                    />
+                    <span class="etiqueta etiqueta_antes">Antes</span>
+                    <span class="etiqueta etiqueta_despues">Después</span>
+                </div>
+                <div class="tarjeta_contenido">
+                    <h3>{trabajo.titulo}</h3>
+                    <p>{trabajo.descripcion}</p>
+                </div>
             </div>
-            <div class="tarjeta_contenido">
-                <h3>Reforma de Vivienda</h3>
-                <p>Instalación completa de techos y tabiquería en pladur para una vivienda moderna y funcional.</p>
-            </div>
-        </div>
-        <div class="tarjeta">
-            <div class="tarjeta_imagen">
-                <img src="https://placehold.co/400x250/e8e8e8/666666?text=Oficinas+Corporativas" alt="Oficinas corporativas">
-            </div>
-            <div class="tarjeta_contenido">
-                <h3>Oficinas Corporativas</h3>
-                <p>Aislamiento térmico y acústico con perlita, más alisado de techos para un entorno profesional.</p>
-            </div>
-        </div>
-        <div class="tarjeta">
-            <div class="tarjeta_imagen">
-                <img src="https://placehold.co/400x250/e8e8e8/666666?text=Decoracion+Clasica" alt="Decoración clásica">
-            </div>
-            <div class="tarjeta_contenido">
-                <h3>Decoración Clásica</h3>
-                <p>Molduras de escayola artesanales que aportan elegancia y distinción a cualquier espacio.</p>
-            </div>
-        </div>
+        ))}
     </div>
 </div>
 
@@ -83,15 +122,65 @@
     }
 
     .tarjeta_imagen {
+        position: relative;
         width: 100%;
         height: 15.6rem;
         overflow: hidden;
+        isolation: isolate;
+        background-color: #eef2f7;
     }
 
-    .tarjeta_imagen img {
+    .tarjeta_imagen::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+            to top right,
+            transparent calc(50% - 1px),
+            rgba(255, 255, 255, 0.85) 50%,
+            transparent calc(50% + 1px)
+        );
+        pointer-events: none;
+        z-index: 2;
+    }
+
+    .imagen_comparativa {
+        position: absolute;
+        inset: 0;
         width: 100%;
         height: 100%;
         object-fit: cover;
+    }
+
+    .imagen_antes {
+        clip-path: polygon(0 0, 0 100%, 100% 0);
+    }
+
+    .imagen_despues {
+        clip-path: polygon(100% 0, 100% 100%, 0 100%);
+    }
+
+    .etiqueta {
+        position: absolute;
+        z-index: 3;
+        padding: 0.35rem 0.7rem;
+        border-radius: 999px;
+        background-color: rgba(31, 40, 58, 0.72);
+        color: white;
+        font-size: 0.78rem;
+        font-weight: 600;
+        letter-spacing: 0.03em;
+        backdrop-filter: blur(4px);
+    }
+
+    .etiqueta_antes {
+        top: 1rem;
+        left: 1rem;
+    }
+
+    .etiqueta_despues {
+        right: 1rem;
+        bottom: 1rem;
     }
 
     .tarjeta_contenido {
@@ -128,6 +217,10 @@
 
         .titulo {
             font-size: 1.5rem;
+        }
+
+        .tarjeta_imagen {
+            height: 14.5rem;
         }
     }
 </style>

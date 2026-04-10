@@ -42,7 +42,7 @@ const trabajos = [
 
 <div class="trabajos_container">
     <div class="trabajos_encabezado">
-        <p class="subtitulo">PORTFOLIO</p>
+        <p class="subtitulo">Portfolio</p>
         <h2 class="titulo">Algunos de Nuestros Trabajos</h2>
     </div>
     <div class="trabajos_grid">
@@ -53,16 +53,23 @@ const trabajos = [
                         class="imagen_comparativa imagen_antes"
                         src={trabajo.imagenAntes.src}
                         alt={trabajo.altAntes}
-                        style={`object-position: ${trabajo.posicionAntes};`}
+                        style={`object-position: ${trabajo.posicionAntes}; clip-path: polygon(0 0, 50% 0, 50% 100%, 0 100%);`}
                     />
                     <img
                         class="imagen_comparativa imagen_despues"
                         src={trabajo.imagenDespues.src}
                         alt={trabajo.altDespues}
-                        style={`object-position: ${trabajo.posicionDespues};`}
+                        style={`object-position: ${trabajo.posicionDespues}; clip-path: polygon(50% 0, 100% 0, 100% 100%, 50% 100%);`}
                     />
-                    <span class="etiqueta etiqueta_antes">Antes</span>
-                    <span class="etiqueta etiqueta_despues">Después</span>
+                    <div class="slider-handle" style="left: 50%;" role="slider" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" tabindex="0">
+                        <div class="slider-handle-line"></div>
+                        <div class="slider-handle-knob">
+                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                                <path d="M7 5L3 10L7 15" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M13 5L17 10L13 15" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
+                    </div>
                 </div>
                 <div class="tarjeta_contenido">
                     <h3>{trabajo.titulo}</h3>
@@ -72,6 +79,90 @@ const trabajos = [
         ))}
     </div>
 </div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const sliders = document.querySelectorAll('.tarjeta_imagen');
+
+        sliders.forEach(container => {
+            const handle = container.querySelector('.slider-handle') as HTMLElement; //as HTMLElement; hace que lo devuelva como elemento html para poder tratarlo bien, en js no haría falta pero en ts sí
+            const imagenAntes = container.querySelector('.imagen_antes') as HTMLElement;
+            const imagenDespues = container.querySelector('.imagen_despues') as HTMLElement;
+
+            if (!handle || !imagenAntes || !imagenDespues) return;
+
+            let isDragging = false;
+
+            const updateSlider = (x: number) => { // Calcula la posición del slider en función de la posición del ratón o dedo
+                const rect = container.getBoundingClientRect(); // Obtiene las dimensiones y posición del contenedor en la pantalla
+                let pos = ((x - rect.left) / rect.width) * 100;
+                pos = Math.max(0, Math.min(100, pos)); // Asegura que la posición esté entre 0 y 100 para que el deslizador no se salga del contenedor
+
+                imagenAntes.style.clipPath = `polygon(0 0, ${pos}% 0, ${pos}% 100%, 0 100%)`;
+                imagenDespues.style.clipPath = `polygon(${pos}% 0, 100% 0, 100% 100%, ${pos}% 100%)`;
+                handle.style.left = `${pos}%`;
+                handle.setAttribute('aria-valuenow', Math.round(pos).toString()); // Actualiza el atributo aria-valuenow para mejorar la accesibilidad, indicando la posición actual del slider a los lectores de pantalla
+            };
+
+            const startDrag = (clientX: number) => {
+                isDragging = true;
+                updateSlider(clientX);
+            };
+
+            const moveDrag = (clientX: number) => {
+                if (!isDragging) return;
+                updateSlider(clientX);
+            };
+
+            const endDrag = () => {
+                isDragging = false;
+            };
+
+            handle.addEventListener('mousedown', (e: MouseEvent) => {
+                e.preventDefault();
+                startDrag(e.clientX);
+                document.addEventListener('mousemove', onMouseMove);
+                document.addEventListener('mouseup', onMouseUp);
+            });
+
+            handle.addEventListener('touchstart', (e: TouchEvent) => {
+                e.preventDefault();
+                startDrag(e.touches[0].clientX);
+                document.addEventListener('touchmove', onTouchMove, { passive: false }); //passsive: false para que no se ejecute el scroll del navegador al mover el dedo, sino que se ejecute la función onTouchMove
+                document.addEventListener('touchend', onTouchEnd);
+            });
+
+            handle.addEventListener('keydown', (e: KeyboardEvent) => { // Permite mover el slider con las teclas de flecha izquierda y derecha para mejorar la accesibilidad
+                const current = parseInt(handle.getAttribute('aria-valuenow') || '50');
+                let newPos = current;
+                if (e.key === 'ArrowLeft') newPos = Math.max(0, current - 2);
+                else if (e.key === 'ArrowRight') newPos = Math.min(100, current + 2);
+                else return;
+                e.preventDefault();
+                const rect = container.getBoundingClientRect();
+                const x = rect.left + (newPos / 100) * rect.width;
+                updateSlider(x);
+            });
+
+            const onMouseMove = (e: MouseEvent) => moveDrag(e.clientX);
+            const onMouseUp = () => { // Termina el arrastre del slider y elimina los event listeners para mejorar el rendimiento
+                endDrag();
+                document.removeEventListener('mousemove', onMouseMove);
+                document.removeEventListener('mouseup', onMouseUp);
+            };
+
+            const onTouchMove = (e: TouchEvent) => {
+                e.preventDefault();
+                moveDrag(e.touches[0].clientX);
+            };
+            const onTouchEnd = () => {
+                endDrag();
+                document.removeEventListener('touchmove', onTouchMove);
+                document.removeEventListener('touchend', onTouchEnd);
+            };
+        });
+    });
+</script>
 
 <style>
     .trabajos_container {
@@ -128,20 +219,7 @@ const trabajos = [
         overflow: hidden;
         isolation: isolate;
         background-color: #eef2f7;
-    }
-
-    .tarjeta_imagen::after {
-        content: '';
-        position: absolute;
-        inset: 0;
-        background: linear-gradient(
-            to top right,
-            transparent calc(50% - 1px),
-            rgba(255, 255, 255, 0.85) 50%,
-            transparent calc(50% + 1px)
-        );
-        pointer-events: none;
-        z-index: 2;
+        cursor: ew-resize;
     }
 
     .imagen_comparativa {
@@ -152,35 +230,41 @@ const trabajos = [
         object-fit: cover;
     }
 
-    .imagen_antes {
-        clip-path: polygon(0 0, 0 100%, 100% 0);
-    }
-
-    .imagen_despues {
-        clip-path: polygon(100% 0, 100% 100%, 0 100%);
-    }
-
-    .etiqueta {
+    .slider-handle {
         position: absolute;
+        top: 0;
+        bottom: 0;
+        width: 40px;
+        transform: translateX(-50%);
         z-index: 3;
-        padding: 0.35rem 0.7rem;
-        border-radius: 999px;
-        background-color: rgba(31, 40, 58, 0.72);
-        color: white;
-        font-size: 0.78rem;
-        font-weight: 600;
-        letter-spacing: 0.03em;
-        backdrop-filter: blur(4px);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        outline: none;
     }
 
-    .etiqueta_antes {
-        top: 1rem;
-        left: 1rem;
+    .slider-handle-line {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        width: 3px;
+        background: rgba(255, 255, 255, 0.9);
+        box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
     }
 
-    .etiqueta_despues {
-        right: 1rem;
-        bottom: 1rem;
+    .slider-handle-knob {
+        position: relative;
+        z-index: 1;
+        width: 40px;
+        height: 40px;
+        background: #1f283a;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        border: 2px solid rgba(255, 255, 255, 0.9);
     }
 
     .tarjeta_contenido {

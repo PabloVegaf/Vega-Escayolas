@@ -1,14 +1,203 @@
-<div class="servicios_container">
-    <h1>Nuestros servicios</h1>
-</div>
+---
+const servicios = [
+    {
+        titulo: "Pladur",
+        descripcion:
+            "Instalación de tabiques, trasdosados y falsos techos de pladur. Soluciones versátiles, rápidas y con un acabado perfecto para cualquier espacio.",
+        icono: "pladur",
+    },
+    {
+        titulo: "Perlita",
+        descripcion:
+            "Aplicación de perlita para un aislamiento térmico y acústico superior. Mejora el confort y la eficiencia energética de tu hogar o negocio.",
+        icono: "perlita",
+    },
+    {
+        titulo: "Escayola",
+        descripcion:
+            "Trabajos decorativos y funcionales en escayola. Molduras, cornisas, falsos techos y elementos personalizados con acabados artesanales.",
+        icono: "escayola",
+    },
+];
+---
+
+<section class="servicios-container" aria-labelledby="servicios-titulo">
+    <div class="servicios-encabezado">
+        <p class="subtitulo">Nuestros Servicios</p>
+        <h2 id="servicios-titulo" class="titulo">
+            Soluciones Integrales para tus Proyectos
+        </h2>
+    </div>
+
+    <div class="servicios-grid">
+        {
+            servicios.map((servicio) => (
+                <article class="tarjeta">
+                    <div class="tarjeta-icono" aria-hidden="true">
+                        {servicio.icono === "pladur" && (
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="28"
+                                height="28"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="#8bc34a"
+                                stroke-width="2"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                            >
+                                <path d="M12 3l8 4.5v9L12 21l-8-4.5v-9L12 3z" />
+                                <path d="M12 12l8-4.5" />
+                                <path d="M12 12v9" />
+                                <path d="M12 12L4 7.5" />
+                            </svg>
+                        )}
+                        {servicio.icono === "perlita" && (
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="28"
+                                height="28"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="#8bc34a"
+                                stroke-width="2"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                            >
+                                <line x1="6" y1="3" x2="6" y2="15" />
+                                <line x1="10" y1="3" x2="10" y2="15" />
+                                <line x1="14" y1="3" x2="14" y2="15" />
+                                <line x1="18" y1="3" x2="18" y2="15" />
+                            </svg>
+                        )}
+                        {servicio.icono === "escayola" && (
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="28"
+                                height="28"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="#8bc34a"
+                                stroke-width="2"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                            >
+                                <path d="M3 21h18" />
+                                <path d="M5 21V7l8-4 8 4v14" />
+                                <path d="M13 11h4" />
+                                <path d="M13 15h4" />
+                            </svg>
+                        )}
+                    </div>
+                    <div class="tarjeta-contenido">
+                        <h3>{servicio.titulo}</h3>
+                        <p>{servicio.descripcion}</p>
+                    </div>
+                </article>
+            ))
+        }
+    </div>
+</section>
 
 <style>
-    .servicios_container {
+    .servicios-container {
         width: 90%;
         margin: 0 auto;
-        padding: 2rem 2rem;
+        padding: 3rem 2rem;
         background-color: #f9fafd;
         border-radius: 0.9rem;
         margin-bottom: 3rem;
+    }
+
+    .servicios-encabezado {
+        text-align: center;
+        margin-bottom: 2.5rem;
+    }
+
+    .subtitulo {
+        color: #8bc34a;
+        font-weight: bold;
+        font-size: 0.9rem;
+        margin-bottom: 0.5rem;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+    }
+
+    .titulo {
+        font-size: 2rem;
+        color: #1f283a;
+        font-weight: bold;
+    }
+
+    .servicios-grid {
+        display: grid !important;
+        grid-template-columns: repeat(3, 1fr) !important;
+        gap: 2rem;
+        width: 100%;
+    }
+
+    .tarjeta {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background-color: #ffffff;
+        border-radius: 12px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        padding: 2.5rem 2rem;
+        text-align: center;
+        transition:
+            transform 0.3s ease,
+            box-shadow 0.3s ease;
+    }
+
+    .tarjeta:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+    }
+
+    .tarjeta-icono {
+        width: 64px;
+        height: 64px;
+        min-width: 64px;
+        min-height: 64px;
+        background-color: #f1f8e9;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 1.5rem;
+    }
+
+    .tarjeta-contenido h3 {
+        font-size: 1.25rem;
+        color: #1f283a;
+        margin-bottom: 0.75rem;
+        font-weight: bold;
+    }
+
+    .tarjeta-contenido p {
+        color: #666666;
+        font-size: 0.95rem;
+        line-height: 1.6;
+    }
+
+    @media (max-width: 64em) {
+        .servicios-grid {
+            grid-template-columns: repeat(2, 1fr) !important;
+        }
+    }
+
+    @media (max-width: 48em) {
+        .servicios-grid {
+            grid-template-columns: 1fr !important;
+        }
+
+        .servicios-container {
+            padding: 2rem 1rem;
+        }
+
+        .titulo {
+            font-size: 1.5rem;
+        }
     }
 </style>

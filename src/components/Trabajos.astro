@@ -1,41 +1,44 @@
 ---
-import Antes1 from '../assets/Antes1.jpg';
-import Antes2 from '../assets/Antes2.jpg';
-import Antes3 from '../assets/Antes3.jpg';
-import Despues1 from '../assets/Despues1.jpg';
-import Despues2 from '../assets/Despues2.jpg';
-import Despues3 from '../assets/Despues3.jpg';
+import Antes1 from "../assets/Antes1.jpg";
+import Antes2 from "../assets/Antes2.jpg";
+import Antes3 from "../assets/Antes3.jpg";
+import Despues1 from "../assets/Despues1.jpg";
+import Despues2 from "../assets/Despues2.jpg";
+import Despues3 from "../assets/Despues3.jpg";
 
 const trabajos = [
     {
-        titulo: 'Reforma de Vivienda',
-        descripcion: 'Instalación completa de techos y tabiquería en pladur para una vivienda moderna y funcional.',
+        titulo: "Lorem ipsum dolor sit amet",
+        descripcion:
+            "Consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
         imagenAntes: Antes1,
         imagenDespues: Despues1,
-        altAntes: 'Estado previo de la reforma de vivienda',
-        altDespues: 'Resultado final de la reforma de vivienda',
-        posicionAntes: 'center center',
-        posicionDespues: 'center center',
+        altAntes: "Estado previo de la reforma de vivienda",
+        altDespues: "Resultado final de la reforma de vivienda",
+        posicionAntes: "center center",
+        posicionDespues: "center center",
     },
     {
-        titulo: 'Oficinas Corporativas',
-        descripcion: 'Aislamiento térmico y acústico con perlita, más alisado de techos para un entorno profesional.',
+        titulo: "Sed do eiusmod tempor",
+        descripcion:
+            "Ut enim ad minim veniam quis nostrud exercitation ullamco laboris nisi ut aliquip.",
         imagenAntes: Antes2,
         imagenDespues: Despues2,
-        altAntes: 'Estado previo de las oficinas corporativas',
-        altDespues: 'Resultado final de las oficinas corporativas',
-        posicionAntes: 'center center',
-        posicionDespues: 'center center',
+        altAntes: "Estado previo de las oficinas corporativas",
+        altDespues: "Resultado final de las oficinas corporativas",
+        posicionAntes: "center center",
+        posicionDespues: "center center",
     },
     {
-        titulo: 'Decoración Clásica',
-        descripcion: 'Molduras de escayola artesanales que aportan elegancia y distinción a cualquier espacio.',
+        titulo: "Ut labore et dolore",
+        descripcion:
+            "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat.",
         imagenAntes: Antes3,
         imagenDespues: Despues3,
-        altAntes: 'Estado previo del espacio con decoración clásica',
-        altDespues: 'Resultado final del espacio con decoración clásica',
-        posicionAntes: 'center center',
-        posicionDespues: 'center center',
+        altAntes: "Estado previo del espacio con decoración clásica",
+        altDespues: "Resultado final del espacio con decoración clásica",
+        posicionAntes: "center center",
+        posicionDespues: "center center",
     },
 ];
 ---
@@ -46,54 +49,88 @@ const trabajos = [
         <h2 class="titulo">Algunos de Nuestros Trabajos</h2>
     </div>
     <div class="trabajos_grid">
-        {trabajos.map((trabajo) => (
-            <div class="tarjeta">
-                <div class="tarjeta_imagen">
-                    <img
-                        class="imagen_comparativa imagen_antes"
-                        src={trabajo.imagenAntes.src}
-                        alt={trabajo.altAntes}
-                        style={`object-position: ${trabajo.posicionAntes}; clip-path: polygon(0 0, 50% 0, 50% 100%, 0 100%);`}
-                    />
-                    <img
-                        class="imagen_comparativa imagen_despues"
-                        src={trabajo.imagenDespues.src}
-                        alt={trabajo.altDespues}
-                        style={`object-position: ${trabajo.posicionDespues}; clip-path: polygon(50% 0, 100% 0, 100% 100%, 50% 100%);`}
-                    />
-                    <div class="slider-handle" style="left: 50%;" role="slider" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" tabindex="0">
-                        <div class="slider-handle-line"></div>
-                        <div class="slider-handle-knob">
-                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-                                <path d="M7 5L3 10L7 15" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                <path d="M13 5L17 10L13 15" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                            </svg>
+        {
+            trabajos.map((trabajo) => (
+                <div class="tarjeta">
+                    <div class="tarjeta_imagen">
+                        <img
+                            class="imagen_comparativa imagen_antes"
+                            src={trabajo.imagenAntes.src}
+                            alt={trabajo.altAntes}
+                            style={`object-position: ${trabajo.posicionAntes}; clip-path: polygon(0 0, 50% 0, 50% 100%, 0 100%);`}
+                        />
+                        <img
+                            class="imagen_comparativa imagen_despues"
+                            src={trabajo.imagenDespues.src}
+                            alt={trabajo.altDespues}
+                            style={`object-position: ${trabajo.posicionDespues}; clip-path: polygon(50% 0, 100% 0, 100% 100%, 50% 100%);`}
+                        />
+                        <div
+                            class="slider-handle"
+                            style="left: 50%;"
+                            role="slider"
+                            aria-valuenow="50"
+                            aria-valuemin="0"
+                            aria-valuemax="100"
+                            tabindex="0"
+                        >
+                            <div class="slider-handle-line" />
+                            <div class="slider-handle-knob">
+                                <svg
+                                    width="20"
+                                    height="20"
+                                    viewBox="0 0 20 20"
+                                    fill="none"
+                                >
+                                    <path
+                                        d="M7 5L3 10L7 15"
+                                        stroke="white"
+                                        stroke-width="2"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                    />
+                                    <path
+                                        d="M13 5L17 10L13 15"
+                                        stroke="white"
+                                        stroke-width="2"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                    />
+                                </svg>
+                            </div>
                         </div>
                     </div>
+                    <div class="tarjeta_contenido">
+                        <h3>{trabajo.titulo}</h3>
+                        <p>{trabajo.descripcion}</p>
+                    </div>
                 </div>
-                <div class="tarjeta_contenido">
-                    <h3>{trabajo.titulo}</h3>
-                    <p>{trabajo.descripcion}</p>
-                </div>
-            </div>
-        ))}
+            ))
+        }
     </div>
 </div>
 
 <script>
-    document.addEventListener('DOMContentLoaded', () => {
-        const sliders = document.querySelectorAll('.tarjeta_imagen');
+    document.addEventListener("DOMContentLoaded", () => {
+        const sliders = document.querySelectorAll(".tarjeta_imagen");
 
-        sliders.forEach(container => {
-            const handle = container.querySelector('.slider-handle') as HTMLElement; //as HTMLElement; hace que lo devuelva como elemento html para poder tratarlo bien, en js no haría falta pero en ts sí
-            const imagenAntes = container.querySelector('.imagen_antes') as HTMLElement;
-            const imagenDespues = container.querySelector('.imagen_despues') as HTMLElement;
+        sliders.forEach((container) => {
+            const handle = container.querySelector(
+                ".slider-handle",
+            ) as HTMLElement; //as HTMLElement; hace que lo devuelva como elemento html para poder tratarlo bien, en js no haría falta pero en ts sí
+            const imagenAntes = container.querySelector(
+                ".imagen_antes",
+            ) as HTMLElement;
+            const imagenDespues = container.querySelector(
+                ".imagen_despues",
+            ) as HTMLElement;
 
             if (!handle || !imagenAntes || !imagenDespues) return;
 
             let isDragging = false;
 
-            const updateSlider = (x: number) => { // Calcula la posición del slider en función de la posición del ratón o dedo
+            const updateSlider = (x: number) => {
+                // Calcula la posición del slider en función de la posición del ratón o dedo
                 const rect = container.getBoundingClientRect(); // Obtiene las dimensiones y posición del contenedor en la pantalla
                 let pos = ((x - rect.left) / rect.width) * 100;
                 pos = Math.max(0, Math.min(100, pos)); // Asegura que la posición esté entre 0 y 100 para que el deslizador no se salga del contenedor
@@ -101,7 +138,10 @@ const trabajos = [
                 imagenAntes.style.clipPath = `polygon(0 0, ${pos}% 0, ${pos}% 100%, 0 100%)`;
                 imagenDespues.style.clipPath = `polygon(${pos}% 0, 100% 0, 100% 100%, ${pos}% 100%)`;
                 handle.style.left = `${pos}%`;
-                handle.setAttribute('aria-valuenow', Math.round(pos).toString()); // Actualiza el atributo aria-valuenow para mejorar la accesibilidad, indicando la posición actual del slider a los lectores de pantalla
+                handle.setAttribute(
+                    "aria-valuenow",
+                    Math.round(pos).toString(),
+                ); // Actualiza el atributo aria-valuenow para mejorar la accesibilidad, indicando la posición actual del slider a los lectores de pantalla
             };
 
             const startDrag = (clientX: number) => {
@@ -118,25 +158,31 @@ const trabajos = [
                 isDragging = false;
             };
 
-            handle.addEventListener('mousedown', (e: MouseEvent) => {
+            handle.addEventListener("mousedown", (e: MouseEvent) => {
                 e.preventDefault();
                 startDrag(e.clientX);
-                document.addEventListener('mousemove', onMouseMove);
-                document.addEventListener('mouseup', onMouseUp);
+                document.addEventListener("mousemove", onMouseMove);
+                document.addEventListener("mouseup", onMouseUp);
             });
 
-            handle.addEventListener('touchstart', (e: TouchEvent) => {
+            handle.addEventListener("touchstart", (e: TouchEvent) => {
                 e.preventDefault();
                 startDrag(e.touches[0].clientX);
-                document.addEventListener('touchmove', onTouchMove, { passive: false }); //passsive: false para que no se ejecute el scroll del navegador al mover el dedo, sino que se ejecute la función onTouchMove
-                document.addEventListener('touchend', onTouchEnd);
+                document.addEventListener("touchmove", onTouchMove, {
+                    passive: false,
+                }); //passsive: false para que no se ejecute el scroll del navegador al mover el dedo, sino que se ejecute la función onTouchMove
+                document.addEventListener("touchend", onTouchEnd);
             });
 
-            handle.addEventListener('keydown', (e: KeyboardEvent) => { // Permite mover el slider con las teclas de flecha izquierda y derecha para mejorar la accesibilidad
-                const current = parseInt(handle.getAttribute('aria-valuenow') || '50');
+            handle.addEventListener("keydown", (e: KeyboardEvent) => {
+                // Permite mover el slider con las teclas de flecha izquierda y derecha para mejorar la accesibilidad
+                const current = parseInt(
+                    handle.getAttribute("aria-valuenow") || "50",
+                );
                 let newPos = current;
-                if (e.key === 'ArrowLeft') newPos = Math.max(0, current - 2);
-                else if (e.key === 'ArrowRight') newPos = Math.min(100, current + 2);
+                if (e.key === "ArrowLeft") newPos = Math.max(0, current - 2);
+                else if (e.key === "ArrowRight")
+                    newPos = Math.min(100, current + 2);
                 else return;
                 e.preventDefault();
                 const rect = container.getBoundingClientRect();
@@ -145,10 +191,11 @@ const trabajos = [
             });
 
             const onMouseMove = (e: MouseEvent) => moveDrag(e.clientX);
-            const onMouseUp = () => { // Termina el arrastre del slider y elimina los event listeners para mejorar el rendimiento
+            const onMouseUp = () => {
+                // Termina el arrastre del slider y elimina los event listeners para mejorar el rendimiento
                 endDrag();
-                document.removeEventListener('mousemove', onMouseMove);
-                document.removeEventListener('mouseup', onMouseUp);
+                document.removeEventListener("mousemove", onMouseMove);
+                document.removeEventListener("mouseup", onMouseUp);
             };
 
             const onTouchMove = (e: TouchEvent) => {
@@ -157,8 +204,8 @@ const trabajos = [
             };
             const onTouchEnd = () => {
                 endDrag();
-                document.removeEventListener('touchmove', onTouchMove);
-                document.removeEventListener('touchend', onTouchEnd);
+                document.removeEventListener("touchmove", onTouchMove);
+                document.removeEventListener("touchend", onTouchEnd);
             };
         });
     });
@@ -180,7 +227,7 @@ const trabajos = [
     }
 
     .subtitulo {
-        color: #8BC34A;
+        color: #8bc34a;
         font-weight: bold;
         font-size: 0.9rem;
         margin-bottom: 0.5rem;
@@ -204,7 +251,9 @@ const trabajos = [
         border-radius: 12px;
         box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
         overflow: hidden;
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        transition:
+            transform 0.3s ease,
+            box-shadow 0.3s ease;
     }
 
     .tarjeta:hover {

@@ -1,12 +1,27 @@
 ---
-import imagen from '../assets/imagen Javier y Rafa.jpg';
+import imagen from "../assets/imagen Javier y Rafa.jpg";
 ---
+
 <div class="sobre_nosotros_container">
     <div class="sobre_nosotros_grid">
         <p class="tituloSecundario">Sobre nosotros</p>
-        <p class="tituloPrincipal">Comprometidos con la calidad y la satisfacción del cliente</p>
-        <p class="textoPrincipal">En Vega Escayolas, llevamos años de experiencia en el sector de la construcción y reformas, especializándonos en la instalación de pladur, aplicación de perlita y trabajos con escayola. Nos dedicamos a ofrecer soluciones a medida para cada proyecto. <br><br> Creemos en el trabajo bien hecho, utilizando materiales de primera calidad y prestando atención a cada detalle para garantizar resultados duraderos y estéticamente impecables. La confianza de nuestros clientes es nuestro mayor aval.</p>    
-        <img class="imagen_sobre_nosotros" src={imagen.src} alt="Imagen sobre nosotros">
+        <p class="tituloPrincipal">
+            Comprometidos con la calidad y la satisfacción del cliente
+        </p>
+        <p class="textoPrincipal">
+            En Vega Escayolas, llevamos años de experiencia en el sector de la
+            construcción y reformas, especializándonos en la instalación de
+            pladur, aplicación de perlita y trabajos con escayola. Nos dedicamos
+            a ofrecer soluciones a medida para cada proyecto. <br /><br /> Creemos
+            en el trabajo bien hecho, utilizando materiales de primera calidad y prestando
+            atención a cada detalle para garantizar resultados duraderos y estéticamente
+            impecables. La confianza de nuestros clientes es nuestro mayor aval.
+        </p>
+        <img
+            class="imagen_sobre_nosotros"
+            src={imagen.src}
+            alt="Imagen sobre nosotros"
+        />
     </div>
 </div>
 
@@ -32,7 +47,7 @@ import imagen from '../assets/imagen Javier y Rafa.jpg';
     .tituloSecundario {
         grid-area: 1 / 1 / 2 / 3;
         font-weight: bold;
-        color: #8BC34A;
+        color: #8bc34a;
         margin-bottom: 0.5rem;
         font-size: 1.1rem;
         text-align: center;

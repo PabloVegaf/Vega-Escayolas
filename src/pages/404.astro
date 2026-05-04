@@ -1,0 +1,148 @@
+---
+import Logo from "../assets/Logo Vega Escayolas.png";
+---
+
+<!doctype html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Página no encontrada | Vega Escayolas</title>
+        <meta name="robots" content="noindex, follow" />
+        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+            body {
+                font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+                    Roboto, sans-serif;
+                background-color: #f9fafd;
+                color: #1f283a;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                min-height: 100vh;
+                padding: 2rem;
+                text-align: center;
+            }
+            img {
+                max-width: 200px;
+                height: auto;
+                margin-bottom: 2rem;
+            }
+            h1 {
+                font-size: 3rem;
+                color: #1f283a;
+                margin-bottom: 0.5rem;
+            }
+            p {
+                color: #666;
+                font-size: 1.1rem;
+                line-height: 1.6;
+                max-width: 30rem;
+                margin-bottom: 2rem;
+            }
+            .volver {
+                display: inline-block;
+                background-color: #8bc34a;
+                color: #1F283A;
+                text-decoration: none;
+                padding: 0.75rem 2rem;
+                border-radius: 25px;
+                font-weight: bold;
+                transition: transform 0.25s ease-out;
+                margin-bottom: 2rem;
+            }
+            .volver:hover {
+                transform: scale(1.06);
+            }
+            .redes {
+                display: flex;
+                gap: 1rem;
+                align-items: center;
+                justify-content: center;
+            }
+            .redes a {
+                display: inline-flex;
+                align-items: center;
+                gap: 0.5rem;
+                text-decoration: none;
+                color: #1f283a;
+                font-weight: bold;
+                padding: 0.5rem 1rem;
+                border: 3px solid #eef2f7;
+                border-radius: 25px;
+                transition:
+                    transform 0.25s ease-out,
+                    border-color 0.25s ease-out;
+            }
+            .redes a:hover {
+                transform: scale(1.06);
+                border-color: #8bc34a;
+            }
+            .redes svg {
+                flex-shrink: 0;
+            }
+        </style>
+    </head>
+    <body>
+        <img
+            src={Logo.src}
+            alt="Logo de Vega Escayolas, expertos en escayola, pladur y perlita"
+            width="200"
+            height="56"
+        />
+        <h1>404</h1>
+        <p>
+            Vaya, la página que buscas no existe. Puede que la dirección no sea
+            correcta o que el contenido ya no esté disponible.
+        </p>
+        <a class="volver" href="/">Volver al inicio</a>
+        <div class="redes">
+            <a
+                href="https://www.facebook.com/profile.php?id=61555620961917"
+                target="_blank"
+                rel="noopener"
+            >
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="#8BC34A"
+                    aria-hidden="true"
+                >
+                    <path
+                        d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 5.013 3.693 9.153 8.5 9.877v-6.99H7.875V12h2.625V9.794c0-2.587 1.54-4.017 3.895-4.017 1.13 0 2.312.202 2.312.202v2.535h-1.302c-1.283 0-1.683.796-1.683 1.613V12h2.864l-.458 2.887h-2.406v6.99C18.307 21.153 22 17.013 22 12z"
+                    />
+                </svg>
+                Facebook
+            </a>
+            <a href="mailto:vegaescayolas@gmail.com">
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="#8BC34A"
+                    aria-hidden="true"
+                >
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                    <path
+                        d="M22 7.535v9.465a3 3 0 0 1 -2.824 2.995l-.176 .005h-14a3 3 0 0 1 -2.995 -2.824l-.005 -.176v-9.465l9.445 6.297l.116 .066a1 1 0 0 0 .878 0l.116 -.066l9.445 -6.297z"
+                    />
+                    <path
+                        d="M19 4c1.08 0 2.027 .57 2.555 1.427l-9.555 6.37l-9.555 -6.37a2.999 2.999 0 0 1 2.354 -1.42l.201 -.007h14z"
+                    />
+                </svg>
+                Email
+            </a>
+        </div>
+    </body>
+</html>

@@ -3,7 +3,7 @@ const servicios = [
     {
         titulo: "Pladur",
         descripcion:
-            "Instalación de tabiques, trasdosados y falsos techos de pladur. Soluciones versátiles, rápidas y con un acabado perfecto para cualquier espacio.",
+            "Instalación de tabiques, trasdosados y falsos techos de pladur en viviendas, locales y oficinas. Soluciones versátiles, rápidas y con un acabado perfecto para cualquier espacio.",
         icono: "pladur",
     },
     {
@@ -145,14 +145,19 @@ const servicios = [
         box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
         padding: 2.5rem 2rem;
         text-align: center;
-        transition:
-            transform 0.3s ease,
-            box-shadow 0.3s ease;
     }
 
     .tarjeta:hover {
         transform: translateY(-5px);
         box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+    }
+
+    @media (prefers-reduced-motion: no-preference) {
+        .tarjeta {
+            transition:
+                transform 0.3s ease,
+                box-shadow 0.3s ease;
+        }
     }
 
     .tarjeta-icono {

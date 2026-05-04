@@ -1,10 +1,10 @@
 ---
-import Antes1 from "../assets/Antes1.jpg";
-import Antes2 from "../assets/Antes2.jpg";
-import Antes3 from "../assets/Antes3.jpg";
-import Despues1 from "../assets/Despues1.jpg";
-import Despues2 from "../assets/Despues2.jpg";
-import Despues3 from "../assets/Despues3.jpg";
+import Antes1 from "../assets/Antes1.webp";
+import Antes2 from "../assets/Antes2.webp";
+import Antes3 from "../assets/Antes3.webp";
+import Despues1 from "../assets/Despues1.webp";
+import Despues2 from "../assets/Despues2.webp";
+import Despues3 from "../assets/Despues3.webp";
 
 const trabajos = [
     {
@@ -57,19 +57,24 @@ const trabajos = [
                             class="imagen_comparativa imagen_antes"
                             src={trabajo.imagenAntes.src}
                             alt={trabajo.altAntes}
+                            width="800"
+                            height="600"
                             style={`object-position: ${trabajo.posicionAntes}; clip-path: polygon(0 0, 50% 0, 50% 100%, 0 100%);`}
                         />
                         <img
                             class="imagen_comparativa imagen_despues"
                             src={trabajo.imagenDespues.src}
                             alt={trabajo.altDespues}
+                            width="800"
+                            height="600"
                             style={`object-position: ${trabajo.posicionDespues}; clip-path: polygon(50% 0, 100% 0, 100% 100%, 50% 100%);`}
                         />
                         <div
                             class="slider-handle"
                             style="left: 50%;"
                             role="slider"
-                            aria-valuenow="50"
+                                                        aria-label="Deslizador para comparar antes y después de {trabajo.titulo}"
+                                                        aria-valuenow="50"
                             aria-valuemin="0"
                             aria-valuemax="100"
                             tabindex="0"
@@ -77,6 +82,7 @@ const trabajos = [
                             <div class="slider-handle-line" />
                             <div class="slider-handle-knob">
                                 <svg
+                                    aria-hidden="true"
                                     width="20"
                                     height="20"
                                     viewBox="0 0 20 20"
@@ -251,14 +257,19 @@ const trabajos = [
         border-radius: 12px;
         box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
         overflow: hidden;
-        transition:
-            transform 0.3s ease,
-            box-shadow 0.3s ease;
     }
 
     .tarjeta:hover {
         transform: translateY(-5px);
         box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+    }
+
+    @media (prefers-reduced-motion: no-preference) {
+        .tarjeta {
+            transition:
+                transform 0.3s ease,
+                box-shadow 0.3s ease;
+        }
     }
 
     .tarjeta_imagen {
@@ -305,8 +316,8 @@ const trabajos = [
     .slider-handle-knob {
         position: relative;
         z-index: 1;
-        width: 40px;
-        height: 40px;
+        width: 44px;
+        height: 44px;
         background: #1f283a;
         border-radius: 50%;
         display: flex;

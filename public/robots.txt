@@ -1,0 +1,6 @@
+# https://vegaescayolas.es/robots.txt
+User-agent: *
+Allow: /
+Disallow: /404
+
+Sitemap: https://vegaescayolas.es/sitemap-index.xml

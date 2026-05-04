@@ -1,80 +1,253 @@
 ---
-import Logo from '../assets/Logo Vega Escayolas.png';
+import Logo from "../assets/Logo Vega Escayolas.webp";
 ---
 
-<div class="header">
-    <img src={Logo.src} alt="Logo Vega Escayolas">
-    <div id="enlaces">
+<nav class="navbar" aria-label="Navegación principal">
+    <a href="/" class="navbar-logo" aria-label="Vega Escayolas — Ir al inicio">
+        <img
+            src={Logo.src}
+            alt="Logo de Vega Escayolas, expertos en escayola, pladur y perlita"
+        />
+    </a>
+
+    <button
+        class="navbar-toggle"
+        id="navbar-toggle"
+        aria-expanded="false"
+        aria-controls="enlaces"
+        aria-label="Abrir menú de navegación"
+        type="button"
+    >
+        <span class="navbar-toggle-icon" aria-hidden="true">
+            <span class="navbar-toggle-bar"></span>
+            <span class="navbar-toggle-bar"></span>
+            <span class="navbar-toggle-bar"></span>
+        </span>
+    </button>
+
+    <div id="enlaces" class="navbar-links">
         <a href="#sobre-nosotros">Sobre nosotros</a>
         <a href="#servicios">Servicios</a>
         <a href="#proyectos">Proyectos</a>
-        <div id="boton-contacto">
-            <a href="#contacto">Contacto</a>
-        </div>
+        <a href="#contacto" class="navbar-cta">Contacto</a>
     </div>
-        
-</div>
+</nav>
+
+<script>
+    const toggle = document.getElementById("navbar-toggle");
+    const menu = document.getElementById("enlaces");
+
+    if (toggle && menu) {
+        toggle.addEventListener("click", () => {
+            const expanded = toggle.getAttribute("aria-expanded") === "true";
+            toggle.setAttribute("aria-expanded", String(!expanded));
+            toggle.setAttribute(
+                "aria-label",
+                expanded ? "Abrir menú de navegación" : "Cerrar menú de navegación",
+            );
+            menu.classList.toggle("navbar-links--open");
+        });
+
+        // Cerrar menú al pulsar un enlace (mejora usabilidad en móvil)
+        menu.querySelectorAll("a").forEach((link) => {
+            link.addEventListener("click", () => {
+                toggle.setAttribute("aria-expanded", "false");
+                toggle.setAttribute("aria-label", "Abrir menú de navegación");
+                menu.classList.remove("navbar-links--open");
+            });
+        });
+    }
+</script>
 
 <style>
-    .header{
-    height: 5rem;
-    max-width: 100%;
-    display: flex;
-    justify-content: space-between;
-    padding-left: 2rem;
-    padding-right: 2rem;
-    background-color: #f9fafd;
-    border-radius: 0.9rem;
-    margin: 1rem;
+    .navbar {
+        height: 5rem;
+        width: 90%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding-left: 2rem;
+        padding-right: 2rem;
+        background-color: #f9fafd;
+        border-radius: 0.9rem;
+        position: relative;
+        overflow: visible;
+        margin: 0 auto;
+        margin-top: 1rem;
     }
 
-    img{
-        max-width: 100%;
+    .navbar-logo {
+        display: flex;
+        align-items: center;
+        flex-shrink: 0;
+    }
+
+    .navbar-logo img {
+        max-width: 200px;
+        width: 100%;
         height: auto;
-        object-fit: contain;
-    }
-    #enlaces{
-    display: flex;
-    align-items: center;
-    gap: 2rem;
-    flex-wrap: wrap;
-    justify-content: flex-end;
-    row-gap: 0.25rem;
-    font-size: 0.95rem;
-    max-width: 100%;
-    font-weight: bold;
+        aspect-ratio: 120 / 50;
+        object-fit: scale-down;
+        padding-top: 5%;
     }
 
-    #enlaces a{
+    /* --- Botón hamburguesa (oculto en desktop) --- */
+    .navbar-toggle {
+        display: none;
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: 0.5rem;
+        z-index: 10;
+        border-radius: 8px;
+        transition: background-color 0.2s ease;
+    }
+
+    .navbar-toggle:hover,
+    .navbar-toggle:focus-visible {
+        background-color: #f1f8e9;
+    }
+
+    .navbar-toggle-icon {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        width: 28px;
+        height: 22px;
+    }
+
+    .navbar-toggle-bar {
+        display: block;
+        width: 100%;
+        height: 3px;
+        background-color: #8BC34A;
+        border-radius: 3px;
+    }
+
+    @media (prefers-reduced-motion: no-preference) {
+        .navbar-toggle-bar {
+            transition: transform 0.3s ease, opacity 0.3s ease;
+        }
+    }
+
+    /* Animación del icono cuando está abierto */
+    .navbar-toggle[aria-expanded="true"] .navbar-toggle-bar:nth-child(1) {
+        transform: translateY(8px) rotate(45deg);
+    }
+
+    .navbar-toggle[aria-expanded="true"] .navbar-toggle-bar:nth-child(2) {
+        opacity: 0;
+    }
+
+    .navbar-toggle[aria-expanded="true"] .navbar-toggle-bar:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg);
+    }
+
+    /* --- Enlaces de navegación --- */
+    .navbar-links {
+        display: flex;
+        align-items: center;
+        gap: 2rem;
+        flex-wrap: wrap;
+        justify-content: flex-end;
+        row-gap: 0.25rem;
+        font-size: 0.95rem;
+        max-width: 100%;
+        font-weight: bold;
+    }
+
+    .navbar-links a {
         text-decoration: none;
         color: #000016;
     }
-    #enlaces a:hover, #boton-contacto:hover{
-        transform:scale(1.06); /* aumenta ligeramente el tamaño del enlace */
-    }
-    #enlaces a, #boton-contacto{
-        transition: transform 0.25s ease-out; /* Transforma la propiedad a animator (transform en este caso), ease-out hace que el movimiento empiece rapido y termine lento. */
-    }
-    #boton-contacto{
-        background-color: #8BC34A;
-        border-radius: 25px;
-        padding: 0.5rem 1rem;
-        
-    }
-    #boton-contacto a{
-        color: white;
-    }
-    #enlaces a, #contacto{
-        transition: transform 0.25s ease-out; /* Transforma la propiedad a animar (transform en este caso), ease-out hace que el movimiento empiece rapido y termine lento. */
-    }
-    #contacto{
-        background-color: #8BC34A;
-        border-radius: 25px;
-        padding: 0.5rem 1rem;
-        
-    }
-    #contacto a{
-        color: white;
+
+    .navbar-links a:hover,
+    .navbar-cta:hover {
+        transform: scale(1.06);
     }
 
+    @media (prefers-reduced-motion: no-preference) {
+        .navbar-links a,
+        .navbar-cta {
+            transition: transform 0.25s ease-out;
+        }
+    }
+
+    .navbar-cta {
+        background-color: #8bc34a;
+        border-radius: 25px;
+        padding: 0.5rem 1rem;
+        color: #1F283A;
+    }
+
+    /* --- Móvil --- */
+    @media (max-width: 48em) {
+        .navbar {
+            padding-left: 1rem;
+            padding-right: 1rem;
+        }
+
+        .navbar-toggle {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .navbar-links {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background-color: #f9fafd;
+            flex-direction: column;
+            align-items: stretch;
+            gap: 0;
+            padding: 1rem 2rem;
+            border-radius: 0 0 0.9rem 0.9rem;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            z-index: 5;
+            margin-top: 0.25rem;
+        }
+
+        .navbar-links--open {
+            display: flex !important;
+        }
+
+        @media (prefers-reduced-motion: no-preference) {
+            .navbar-links {
+                transition: opacity 0.25s ease;
+            }
+        }
+
+        .navbar-links a {
+            display: block;
+            padding: 0.75rem 0;
+            text-align: center;
+            border-bottom: 1px solid #eef2f7;
+        }
+
+        .navbar-links a:last-child {
+            border-bottom: none;
+        }
+
+        .navbar-cta {
+            display: inline-block;
+            text-align: center;
+            margin-top: 0.5rem;
+            border-radius: 25px;
+        }
+    }
+
+    @media (max-width: 48em) {
+        .navbar-logo img {
+            max-width: 200px;
+        }
+    }
+
+    @media (max-width: 48em) {
+        .navbar:has(.navbar-links--open) {
+            border-radius: 0.9rem 0.9rem 0 0;
+        }
+    }
 </style>

@@ -1,14 +1,20 @@
 
-<div id="footer">
-    <small>&copy; 2026 Vega Escayolas. Todos los derechos reservados.</small>
-</div>
+<p class="footer-texto">&copy; <span id="current-year"></span> Vega Escayolas. Todos los derechos reservados. &mdash; El Puerto de Santa María, Cádiz.</p>
+
+<script>
+    const year = document.getElementById("current-year");
+    if (year) {
+        year.textContent = new Date().getFullYear().toString();
+    }
+</script>
 
 <style>
-    #footer{
+    .footer-texto {
         background-color: #1f283a;
         color: #ffffff;
         text-align: center;
         padding: 1rem;
         font-size: 0.875rem;
+        margin: 0;
     }
 </style>

@@ -1,6 +1,6 @@
-<div class="header">
+<section class="header">
     <h1 id="titulo">Dedicados a la escayola, el pladur y la perlita</h1>
-    <p>Transformamos tus espacios con acabados de alta calidad, profesionalidad y garantía</p>
+    <p>Transformamos tus espacios con acabados de alta calidad, profesionalidad y garantía en El Puerto de Santa María, Cádiz y alrededores</p>
     <div id="solicitar_presupuesto">
         <a href="#contacto">Solicitar Presupuesto</a>
     </div>
@@ -23,13 +23,16 @@
     }
     #solicitar_presupuesto a {
         text-decoration: none;
-        color: white;
+        color: #1F283A;
         font-weight: bold;
     }
     #solicitar_presupuesto:hover {
         transform: scale(1.06);
     }
-    #solicitar_presupuesto {
-        transition: transform 0.25s ease-out;
+
+    @media (prefers-reduced-motion: no-preference) {
+        #solicitar_presupuesto {
+            transition: transform 0.25s ease-out;
+        }
     }
 </style>
